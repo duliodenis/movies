@@ -12,6 +12,7 @@ class MoviesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var urlOMDB = "https://www.omdbapi.com/?s=Antitrust"
+    var movies:[Movie] = [Movie]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,12 +20,15 @@ class MoviesViewController: UIViewController {
         tableView.dataSource = self
         
         moviesDownload(urlString: urlOMDB) { (array) in
-            // TODO
+            self.movies = array
+            self.tableView.reloadData()
         }
     }
     
     
-    func moviesDownload(urlString: String, completion: (_ array:NSArray)->()) {
+    func moviesDownload(urlString: String, completion: @escaping (_ array:[Movie])->()) {
+        var movies:[Movie] = [Movie]()
+        
         let url = URL(string: urlString)
         let session = URLSession.shared
         let request = session.dataTask(with: url!) { (data, response, error) in
@@ -34,7 +38,21 @@ class MoviesViewController: UIViewController {
                         let jsonDictionary = try JSONSerialization.jsonObject(with: validData, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
                         
                         let movieArray = jsonDictionary["Search"] as! NSArray
-                        print(movieArray)
+                        
+                        for movie in movieArray {
+                            let movieDictionary = movie as! NSDictionary
+                            
+                            let title = movieDictionary["Title"] as! String
+                            let year = movieDictionary["Year"] as! String
+                            let ID = movieDictionary["imdbID"] as! String
+                            let type = movieDictionary["Type"] as! String
+                            let thumbnail = movieDictionary["Poster"] as! String
+                            
+                            let movie = Movie(title: title, year: year, ID: ID, type: type, thumbnail: thumbnail)
+                            
+                            movies.append(movie)
+                        }
+                        completion(movies)
                         
                     } catch {
                         print(error.localizedDescription)
@@ -57,12 +75,16 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath)
-        cell.textLabel?.text = "Movie \(indexPath.row + 1)"
+        
+        let movie = movies[indexPath.row] as Movie
+        cell.textLabel?.text = movie.title
+        cell.detailTextLabel?.text = movie.year
+        
         return cell
     }
     
