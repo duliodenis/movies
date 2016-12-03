@@ -52,13 +52,33 @@ class MoviesViewController: UIViewController {
                             
                             movies.append(movie)
                         }
-                        completion(movies)
+                        
+                        DispatchQueue.main.async(execute: { 
+                            completion(movies)
+                        })
                         
                     } catch {
                         print(error.localizedDescription)
                     }
                 }
             }
+        }
+        request.resume()
+    }
+    
+    
+    func mediaDownload(mediaURL: String, completion: @escaping (_ mediaData:Data)->()) {
+        let url = URL(string: mediaURL)
+        let request = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            
+            if error == nil {
+                if let validData = data {
+                    completion(validData)
+                }
+            } else {
+                print(error?.localizedDescription)
+            }
+    
         }
         request.resume()
     }
@@ -84,6 +104,10 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
         let movie = movies[indexPath.row] as Movie
         cell.textLabel?.text = movie.title
         cell.detailTextLabel?.text = movie.year
+        
+        mediaDownload(mediaURL: movie.thumbnail!) { (data) in
+            cell.imageView?.image = UIImage(data: data)
+        }
         
         return cell
     }
