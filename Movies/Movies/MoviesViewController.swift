@@ -83,6 +83,15 @@ class MoviesViewController: UIViewController {
         request.resume()
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MovieWebViewController" {
+            let destinationVC = segue.destination as! MovieWebViewController
+            let index = tableView.indexPathForSelectedRow
+            destinationVC.movie = movies[index!.row]
+        }
+    }
+    
 }
 
 

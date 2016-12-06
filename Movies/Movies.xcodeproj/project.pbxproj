@@ -13,6 +13,7 @@
 		6C46085D1DEA2B3000622226 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C46085B1DEA2B3000622226 /* LaunchScreen.storyboard */; };
 		6C4608651DEA2CDA00622226 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4608641DEA2CDA00622226 /* MoviesViewController.swift */; };
 		6C4608671DEF3CF800622226 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4608661DEF3CF800622226 /* Movie.swift */; };
+		6C4608691DF35E4200622226 /* MovieWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4608681DF35E4200622226 /* MovieWebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		6C46085E1DEA2B3000622226 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C4608641DEA2CDA00622226 /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		6C4608661DEF3CF800622226 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		6C4608681DF35E4200622226 /* MovieWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieWebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				6C4608521DEA2B3000622226 /* AppDelegate.swift */,
 				6C4608641DEA2CDA00622226 /* MoviesViewController.swift */,
+				6C4608681DF35E4200622226 /* MovieWebViewController.swift */,
 				6C4608661DEF3CF800622226 /* Movie.swift */,
 				6C4608561DEA2B3000622226 /* Main.storyboard */,
 				6C4608591DEA2B3000622226 /* Assets.xcassets */,
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C4608691DF35E4200622226 /* MovieWebViewController.swift in Sources */,
 				6C4608531DEA2B3000622226 /* AppDelegate.swift in Sources */,
 				6C4608651DEA2CDA00622226 /* MoviesViewController.swift in Sources */,
 				6C4608671DEF3CF800622226 /* Movie.swift in Sources */,

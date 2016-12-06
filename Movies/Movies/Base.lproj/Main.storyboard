@@ -48,6 +48,9 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="FOF-rU-pZ6" kind="show" identifier="MovieWebViewController" id="qZI-dh-ErQ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -66,6 +69,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Movie Web View Controller-->
+        <scene sceneID="gLR-3Z-Qgu">
+            <objects>
+                <viewController id="FOF-rU-pZ6" customClass="MovieWebViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nLk-B0-iiB"/>
+                        <viewControllerLayoutGuide type="bottom" id="RrY-Yz-iLx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zpp-Um-jq3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYa-5n-yeI">
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hYa-5n-yeI" firstAttribute="leading" secondItem="zpp-Um-jq3" secondAttribute="leading" id="0Oz-vj-mT1"/>
+                            <constraint firstItem="hYa-5n-yeI" firstAttribute="top" secondItem="nLk-B0-iiB" secondAttribute="bottom" constant="-20" id="mJp-VB-kor"/>
+                            <constraint firstAttribute="trailing" secondItem="hYa-5n-yeI" secondAttribute="trailing" id="oV3-dN-oeN"/>
+                            <constraint firstItem="RrY-Yz-iLx" firstAttribute="top" secondItem="hYa-5n-yeI" secondAttribute="bottom" id="xW2-1k-lWo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="movieWebView" destination="hYa-5n-yeI" id="lZt-g3-0mn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SCr-Qo-T1g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="808.79999999999995" y="37.331334332833585"/>
         </scene>
     </scenes>
     <resources>
